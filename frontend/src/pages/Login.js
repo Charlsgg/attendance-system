@@ -39,9 +39,9 @@ export default function Login() {
     if (validate()) {
       const result = await login(email, password);
       if (result.success) {
-        navigate('/');
+        navigate('/courses');
       } else {
-        setErrors({ form: result.message || 'Login failed' });
+        setErrors({ form: result.message || 'Loginsss failed' });
       }
     }
   };

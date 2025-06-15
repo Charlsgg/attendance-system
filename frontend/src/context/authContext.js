@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
       try {
         api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         const decoded = jwtDecode(token);
-        const res = await api.get(`/api/users/${decoded.id}`);
+        const res = await api.get(`/users/${decoded.id}`);
         setUser(res.data);
         setIsAuthenticated(true);
       } catch (err) {
@@ -30,14 +30,14 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const res = await api.post('/api/auth/login', { email, password });
+      const res = await api.post('/auth/login', { email, password });
       localStorage.setItem('token', res.data.token);
-      await checkAuth();
+      await checkAuth();  
       return { success: true };
     } catch (err) {
-      return { success: false, message: err.response?.data?.message || 'Login failed' };
+      return { success: false, message: err.response?.data?.message || 'Logins failed' };
     }
-  };
+  };  
 
   const logout = () => {
     localStorage.removeItem('token');

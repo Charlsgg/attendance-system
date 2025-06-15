@@ -1,5 +1,5 @@
 const User = require('../models/User');
-const ErrorResponse = require('../utils/errorResponse');
+// const ErrorResponse = require('../utils/errorResponse');
 
 exports.register = async (req, res, next) => {
   const { name, email, password, role } = req.body;
